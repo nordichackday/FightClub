@@ -34,7 +34,6 @@ namespace FightClub.Repository.Implementation
                 return userProfile;
             }
         }
-
         public IEnumerable<avatar> GetAvatars()
         {
             using (var db = new fightClubEntities())
@@ -49,7 +48,6 @@ namespace FightClub.Repository.Implementation
                 return db.user.ToList();
             }
         }
-
         public void CreateMatch(match match)
         {
             using (var db = new fightClubEntities())
@@ -57,7 +55,6 @@ namespace FightClub.Repository.Implementation
                 db.match.Add(match);
             }
         }
-
         public void UpdateMatch(match match)
         {
             using (var db = new fightClubEntities())
@@ -68,7 +65,6 @@ namespace FightClub.Repository.Implementation
                 db.SaveChanges();
             }
         }
-
         public void AddAvatar(avatar avatar)
         {
             using (var db = new fightClubEntities())
