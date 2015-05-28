@@ -224,6 +224,7 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Match\Create.cshtml" />
     <Content Include="Views\Match\Replay.cshtml" />
+    <Content Include="Views\Match\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
