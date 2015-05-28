@@ -2,7 +2,6 @@ using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
-using FightClub.Model;
 
 namespace FightClub.Repository.Implementation
 {
