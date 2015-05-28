@@ -67,7 +67,6 @@
       <DependentUpon>gamedata.edmx</DependentUpon>
     </Compile>
     <Compile Include="Implementation\GameRepository.cs" />
-    <Compile Include="IGameRepository.cs" />
     <Compile Include="match.cs">
       <DependentUpon>gamedata.tt</DependentUpon>
     </Compile>

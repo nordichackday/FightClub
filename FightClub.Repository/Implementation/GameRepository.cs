@@ -1,9 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace FightClub.Repository.Implementation
 {
-    public class GameRepository : IGameRepository
+    public class GameRepository
     {
         public user GetUser(string userName)
         {
@@ -28,5 +29,22 @@ namespace FightClub.Repository.Implementation
                 return userProfile;
             }
         }
+
+        public IEnumerable<avatar> GetAvatars()
+        {
+            using (var db = new fightClubEntities())
+            {
+                return db.avatar.ToList();
+            }
+        }
+        public IEnumerable<user> GetUsers()
+        {
+            using (var db = new fightClubEntities())
+            {
+                return db.user.ToList();
+            }
+        }
+
+
     }
 }

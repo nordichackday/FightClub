@@ -12,7 +12,7 @@ namespace FightClub.Controllers
 {
     public class UserController : Controller
     {
-        private readonly IGameRepository _gameRepository;
+        private readonly GameRepository _gameRepository;
 
         public UserController()
         {
