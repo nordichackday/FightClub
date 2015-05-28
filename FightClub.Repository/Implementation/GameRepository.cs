@@ -9,6 +9,9 @@ namespace FightClub.Repository.Implementation
     {
         public user GetUser(string userName)
         {
+            if (string.IsNullOrEmpty(userName))
+                throw new ArgumentException("invalid input","userName");
+
             using (var db = new fightClubEntities())
             {
                 var userProfile = db.user.SingleOrDefault(a => a.username == userName);
