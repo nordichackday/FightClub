@@ -17,14 +17,11 @@ namespace FightClub.Repository.Implementation
                 var userProfile = db.user.SingleOrDefault(a => a.username == userName);
                 if (userProfile == null)
                 {
-                    var rnd = new Random();
-                    var number = rnd.Next(1, db.avatar.Count());
-                    var avatar = db.avatar.Single(a => a.id == number);
+                    var ava =  db.avatar.OrderBy(r => Guid.NewGuid()).First();
                     var newUser = new user
                     {
                         username = userName,
-                        //avatarId = rnd.Next(db.avatar.Count()),
-                        avatar = avatar,
+                        avatar = ava,
                         created = DateTime.Now,
                         lastModified = DateTime.Now,
                         matchesLeft = 10
@@ -79,9 +76,7 @@ namespace FightClub.Repository.Implementation
         {
             using (var db = new fightClubEntities())
             {
-                var rnd = new Random();
-                var max = db.user.Count();
-                var opponent = db.user.Single(a => a.id == rnd.Next(1, max));
+                var opponent = db.user.OrderBy(r => Guid.NewGuid()).First();
                 return opponent;
             }
         }
