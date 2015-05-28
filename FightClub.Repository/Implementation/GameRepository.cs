@@ -16,7 +16,7 @@ namespace FightClub.Repository.Implementation
                 {
                     var rnd = new Random();
                     var number = rnd.Next(1, db.avatar.Count());
-                    var avatar = db.avatar.Single(a => a.id == number );
+                    var avatar = db.avatar.Single(a => a.id == number);
                     var newUser = new user
                     {
                         username = userName,
@@ -59,7 +59,7 @@ namespace FightClub.Repository.Implementation
             using (var db = new fightClubEntities())
             {
                 var oldMatch = db.match.Single(a => a.id == match.id);
-                if(oldMatch == null) return;
+                if (oldMatch == null) return;
                 oldMatch = match;
                 db.SaveChanges();
             }
@@ -70,6 +70,16 @@ namespace FightClub.Repository.Implementation
             {
                 db.avatar.Add(avatar);
                 db.SaveChanges();
+            }
+        }
+        public user GetRandomOpponent()
+        {
+            using (var db = new fightClubEntities())
+            {
+                var rnd = new Random();
+                var max = db.user.Count();
+                var opponent = db.user.Single(a => a.id == rnd.Next(1, max));
+                return opponent;
             }
         }
     }
