@@ -30,8 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,8 +48,65 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="avatar.cs">
+      <DependentUpon>gamedata.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gamedata.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>gamedata.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gamedata.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>gamedata.tt</DependentUpon>
+    </Compile>
+    <Compile Include="gamedata.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>gamedata.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Implementation\GameRepository.cs" />
+    <Compile Include="IGameRepository.cs" />
+    <Compile Include="match.cs">
+      <DependentUpon>gamedata.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="user.cs">
+      <DependentUpon>gamedata.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FightClub.Model\FightClub.Model.csproj">
+      <Project>{871558FD-7315-4E96-964C-93036F8F1BEC}</Project>
+      <Name>FightClub.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="gamedata.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>gamedata.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="gamedata.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>gamedata.edmx</DependentUpon>
+      <LastGenOutput>gamedata.Context.cs</LastGenOutput>
+    </None>
+    <None Include="gamedata.edmx.diagram">
+      <DependentUpon>gamedata.edmx</DependentUpon>
+    </None>
+    <None Include="gamedata.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>gamedata.edmx</DependentUpon>
+      <LastGenOutput>gamedata.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="avatar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="match">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="resolved" Type="bit" Nullable="false" />
+          <Property Name="result" Type="int" />
+          <Property Name="user1" Type="int" Nullable="false" />
+          <Property Name="user1move1" Type="int" Nullable="false" />
+          <Property Name="user1move2" Type="int" Nullable="false" />
+          <Property Name="user1move3" Type="int" Nullable="false" />
+          <Property Name="user2" Type="int" Nullable="false" />
+          <Property Name="user2move1" Type="int" />
+          <Property Name="user2move2" Type="int" />
+          <Property Name="user2move3" Type="int" />
+          <Property Name="created" Type="datetime" Nullable="false" />
+          <Property Name="solvedTime" Type="datetime" />
+          <Property Name="user1Points" Type="int" />
+          <Property Name="user2Points" Type="int" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="matchesLeft" Type="int" Nullable="false" />
+          <Property Name="avatarId" Type="int" Nullable="false" />
+          <Property Name="created" Type="datetime" Nullable="false" />
+          <Property Name="lastModified" Type="datetime" Nullable="false" />
+          <Property Name="score" Type="int" Nullable="false" />
+          <Property Name="wins" Type="int" Nullable="false" />
+          <Property Name="losses" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_match_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="match" Type="Self.match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="match">
+              <PropertyRef Name="user1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_match_user1">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="match" Type="Self.match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="match">
+              <PropertyRef Name="user2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_avatar">
+          <End Role="avatar" Type="Self.avatar" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="avatar">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="avatarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="avatar" EntityType="Self.avatar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="match" EntityType="Self.match" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_match_user" Association="Self.FK_match_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="match" EntitySet="match" />
+          </AssociationSet>
+          <AssociationSet Name="FK_match_user1" Association="Self.FK_match_user1">
+            <End Role="user" EntitySet="user" />
+            <End Role="match" EntitySet="match" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_avatar" Association="Self.FK_user_avatar">
+            <End Role="avatar" EntitySet="avatar" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="avatar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK_user_avatar" FromRole="avatar" ToRole="user" />
+        </EntityType>
+        <EntityType Name="match">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="resolved" Type="Boolean" Nullable="false" />
+          <Property Name="result" Type="Int32" />
+          <Property Name="user1" Type="Int32" Nullable="false" />
+          <Property Name="user1move1" Type="Int32" Nullable="false" />
+          <Property Name="user1move2" Type="Int32" Nullable="false" />
+          <Property Name="user1move3" Type="Int32" Nullable="false" />
+          <Property Name="user2" Type="Int32" Nullable="false" />
+          <Property Name="user2move1" Type="Int32" />
+          <Property Name="user2move2" Type="Int32" />
+          <Property Name="user2move3" Type="Int32" />
+          <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="solvedTime" Type="DateTime" Precision="3" />
+          <Property Name="user1Points" Type="Int32" />
+          <Property Name="user2Points" Type="Int32" />
+          <NavigationProperty Name="user" Relationship="Self.FK_match_user" FromRole="match" ToRole="user" />
+          <NavigationProperty Name="user3" Relationship="Self.FK_match_user1" FromRole="match" ToRole="user" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="matchesLeft" Type="Int32" Nullable="false" />
+          <Property Name="avatarId" Type="Int32" Nullable="false" />
+          <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="lastModified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="score" Type="Int32" Nullable="false" />
+          <Property Name="wins" Type="Int32" Nullable="false" />
+          <Property Name="losses" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="avatar" Relationship="Self.FK_user_avatar" FromRole="user" ToRole="avatar" />
+          <NavigationProperty Name="match" Relationship="Self.FK_match_user" FromRole="user" ToRole="match" />
+          <NavigationProperty Name="match1" Relationship="Self.FK_match_user1" FromRole="user" ToRole="match" />
+        </EntityType>
+        <Association Name="FK_user_avatar">
+          <End Role="avatar" Type="Self.avatar" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="avatar">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="avatarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_match_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="match" Type="Self.match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="match">
+              <PropertyRef Name="user1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_match_user1">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="match" Type="Self.match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="match">
+              <PropertyRef Name="user2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="fightClubEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="avatar" EntityType="Self.avatar" />
+          <EntitySet Name="match" EntityType="Self.match" />
+          <EntitySet Name="user" EntityType="Self.user" />
+          <AssociationSet Name="FK_user_avatar" Association="Self.FK_user_avatar">
+            <End Role="avatar" EntitySet="avatar" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_match_user" Association="Self.FK_match_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="match" EntitySet="match" />
+          </AssociationSet>
+          <AssociationSet Name="FK_match_user1" Association="Self.FK_match_user1">
+            <End Role="user" EntitySet="user" />
+            <End Role="match" EntitySet="match" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="fightClubEntities">
+          <EntitySetMapping Name="avatar">
+            <EntityTypeMapping TypeName="Model.avatar">
+              <MappingFragment StoreEntitySet="avatar">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="match">
+            <EntityTypeMapping TypeName="Model.match">
+              <MappingFragment StoreEntitySet="match">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="resolved" ColumnName="resolved" />
+                <ScalarProperty Name="result" ColumnName="result" />
+                <ScalarProperty Name="user1" ColumnName="user1" />
+                <ScalarProperty Name="user1move1" ColumnName="user1move1" />
+                <ScalarProperty Name="user1move2" ColumnName="user1move2" />
+                <ScalarProperty Name="user1move3" ColumnName="user1move3" />
+                <ScalarProperty Name="user2" ColumnName="user2" />
+                <ScalarProperty Name="user2move1" ColumnName="user2move1" />
+                <ScalarProperty Name="user2move2" ColumnName="user2move2" />
+                <ScalarProperty Name="user2move3" ColumnName="user2move3" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="solvedTime" ColumnName="solvedTime" />
+                <ScalarProperty Name="user1Points" ColumnName="user1Points" />
+                <ScalarProperty Name="user2Points" ColumnName="user2Points" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="Model.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="matchesLeft" ColumnName="matchesLeft" />
+                <ScalarProperty Name="avatarId" ColumnName="avatarId" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="lastModified" ColumnName="lastModified" />
+                <ScalarProperty Name="score" ColumnName="score" />
+                <ScalarProperty Name="wins" ColumnName="wins" />
+                <ScalarProperty Name="losses" ColumnName="losses" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

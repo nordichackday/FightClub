@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace FightClub.Model
 {
-    public class Class1
+    public class User
     {
+        
     }
 }
