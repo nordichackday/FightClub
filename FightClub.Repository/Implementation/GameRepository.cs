@@ -5,7 +5,7 @@ using FightClub.Model;
 
 namespace FightClub.Repository.Implementation
 {
-    public class GameRepository : IGameRepository
+    public class GameRepository 
     {
         public user GetUser(string userName)
         {
