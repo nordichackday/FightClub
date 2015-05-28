@@ -1,0 +1,18 @@
+﻿@using AutoMapper.Internal
+@model FightClub.Models.Match
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+    <h4>Match</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @Model.User1Move1.ToNullSafeString()
+    </dl>
+</div>
+<p>
+</p>
