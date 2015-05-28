@@ -1,11 +1,12 @@
 using System;
 using System.CodeDom;
+using System.Collections.Generic;
 using System.Linq;
 using FightClub.Model;
 
 namespace FightClub.Repository.Implementation
 {
-    public class GameRepository 
+    public class GameRepository
     {
         public user GetUser(string userName)
         {
@@ -30,5 +31,22 @@ namespace FightClub.Repository.Implementation
                 return userProfile;
             }
         }
+
+        public IEnumerable<avatar> GetAvatars()
+        {
+            using (var db = new fightClubEntities())
+            {
+                return db.avatar.ToList();
+            }
+        }
+        public IEnumerable<user> GetUsers()
+        {
+            using (var db = new fightClubEntities())
+            {
+                return db.user.ToList();
+            }
+        }
+
+
     }
 }
