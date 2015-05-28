@@ -1,7 +1,5 @@
 using System;
-using System.CodeDom;
 using System.Linq;
-using FightClub.Model;
 
 namespace FightClub.Repository.Implementation
 {

@@ -77,12 +77,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FightClub.Model\FightClub.Model.csproj">
-      <Project>{871558FD-7315-4E96-964C-93036F8F1BEC}</Project>
-      <Name>FightClub.Model</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EntityDeploy Include="gamedata.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>gamedata.Designer.cs</LastGenOutput>
