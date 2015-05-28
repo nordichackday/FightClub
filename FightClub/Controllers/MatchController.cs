@@ -20,22 +20,21 @@ namespace FightClub.Controllers
 
         public ActionResult Index(string user1, string user2)
         {
-            var match = Mapper.Map<Match>(new match() { user1move1 = 1, user1move2 = 1, user1move3 = 1, user2move1 = 1, user2move2 = 1, user2move3 = null });
+            var match = new Match() {User1 = user1, User2 = user2};
             return View(match);
-
         }
 
         public ActionResult Create(Match match)
         {
-            //TODO :
-            return View(new Match());
+            //TODO : save
+            return RedirectToAction("Index", "User", new {id = match.User1});
         }
 
         [HttpPost]
         public ActionResult Update(Match match)
         {
-            // save 
-            // if done replay else home to user
+            // calc & save 
+            
             return Replay(match);
         }
 

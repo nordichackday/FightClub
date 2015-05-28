@@ -1,5 +1,4 @@
-﻿@using AutoMapper.Internal
-@model FightClub.Models.Match
+﻿@model FightClub.Models.Match
 
 @{
     ViewBag.Title = "Index";
@@ -8,10 +7,10 @@
 <h2>Index</h2>
 
 <div>
-    <h4>Match</h4>
+    <h4>Match @Model.User1 vs @Model.User2</h4>
     <hr />
     <dl class="dl-horizontal">
-        @Model.User1Move1.ToNullSafeString()
+        @Model.User1Move1
     </dl>
 </div>
 <p>
