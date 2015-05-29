@@ -18,6 +18,8 @@ namespace FightClub.App_Start
                 .ForMember(a => a.User2Move2, b => b.MapFrom(c => (Move?) c.user2move2))
                 .ForMember(a => a.User2Move3, b => b.MapFrom(c => (Move?) c.user2move3));
 
+            Mapper.CreateMap<Match, Repository.match>();
+
 #if DEBUG
             Mapper.AssertConfigurationIsValid();
 #endif
