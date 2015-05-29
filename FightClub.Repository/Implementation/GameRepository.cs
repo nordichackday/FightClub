@@ -11,14 +11,14 @@ namespace FightClub.Repository.Implementation
         public user GetUser(string userName)
         {
             if (string.IsNullOrEmpty(userName))
-                throw new ArgumentException("invalid input","userName");
+                throw new ArgumentException("invalid input", "userName");
 
             using (var db = new fightClubEntities())
             {
                 var userProfile = db.user.SingleOrDefault(a => a.username == userName);
                 if (userProfile == null)
                 {
-                    var ava =  db.avatar.OrderBy(r => Guid.NewGuid()).First();
+                    var ava = db.avatar.OrderBy(r => Guid.NewGuid()).First();
                     var newUser = new user
                     {
                         username = userName,
@@ -94,7 +94,7 @@ namespace FightClub.Repository.Implementation
         {
             using (var db = new fightClubEntities())
             {
-               var result = db.match.SingleOrDefault(a => a.id == id);
+                var result = db.match.SingleOrDefault(a => a.id == id);
                 return result;
             }
         }
@@ -102,11 +102,11 @@ namespace FightClub.Repository.Implementation
         {
             using (var db = new fightClubEntities())
             {
-                var dbuser = db.user.Single(a => a.id ==user.id);
+                var dbuser = db.user.Single(a => a.id == user.id);
                 dbuser = user;
                 db.SaveChanges();
                 return dbuser;
-            }  
+            }
         }
 
         public List<match> GetPendingMatches(int id)
@@ -121,7 +121,7 @@ namespace FightClub.Repository.Implementation
         {
             using (var db = new fightClubEntities())
             {
-                return db.match.Where(a => a.user2 == id || a.user1 == id).ToList();
+                return db.match.Where(a => (a.user2 == id || a.user1 == id) && a.resolved).ToList();
             }
         }
 
@@ -130,6 +130,22 @@ namespace FightClub.Repository.Implementation
             using (var db = new fightClubEntities())
             {
                 return db.match.ToList();
+            }
+        }
+
+        public List<match> GetWaitingMatches(int id)
+        {
+            using (var db = new fightClubEntities())
+            {
+                return db.match.Where(a => a.user1 == id).ToList();
+            }
+        }
+
+        public user GetUserById(int id)
+        {
+            using (var db = new fightClubEntities())
+            {
+                return db.user.Single(a => a.id == id);
             }
         }
     }

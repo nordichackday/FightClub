@@ -27,7 +27,8 @@ namespace FightClub.Controllers
             {
                 User = user,
                 PendingMatches = Mapper.Map<List<Match>>(_gameRepository.GetPendingMatches(dbuser.id)),
-                PlayedMatches = Mapper.Map<List<Match>>(_gameRepository.GetPlayedMatches(dbuser.id))
+                PlayedMatches = Mapper.Map<List<Match>>(_gameRepository.GetPlayedMatches(dbuser.id)),
+                WaitingMatches = Mapper.Map<List<Match>>(_gameRepository.GetWaitingMatches(dbuser.id)),
             };
             return View(model);
         }

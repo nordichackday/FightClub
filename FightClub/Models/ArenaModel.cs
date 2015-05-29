@@ -11,6 +11,7 @@ namespace FightClub.Models
         public User User { get; set; }
         public List<Match> PendingMatches { get; set; }
         public List<Match> PlayedMatches { get; set; }
+        public List<Match> WaitingMatches { get; set; }
     }
     
 }

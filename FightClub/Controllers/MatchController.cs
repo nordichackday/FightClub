@@ -32,6 +32,8 @@ namespace FightClub.Controllers
         {
             ViewBag.ActiveUser = "User2";
             var match = Mapper.Map<Match>(_gameRepository.GetMatchByMatchId(matchid));
+            match.User1 = _gameRepository.GetUserById(match.User1Id).username;
+            match.User2 = _gameRepository.GetUserById(match.User2Id).username;
             return View("Index", match);
         }
 
