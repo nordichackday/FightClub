@@ -27,6 +27,9 @@ namespace FightClub.Models
         public DateTime? SolvedTime { get; set; }
         public int? User1Points { get; set; }
         public int? User2Points { get; set; }
+
+        public string FirstUsername { get; set; }
+        public string SecondUsername { get; set; }
     }
     public enum Move
     {

@@ -12,9 +12,14 @@ namespace FightClub.App_Start
     {
         public static void Init()
         {
+            var _repo = new FightClub.Repository.Implementation.GameRepository();
             Mapper.CreateMap<Repository.user, User>();
             Mapper.CreateMap<Repository.match, Match>()
                 .ForMember(a=> a.User1Id, b => b.MapFrom(c=> c.user1))
+
+                .ForMember(a=> a.FirstUsername, b => b.MapFrom(c=> _repo.GetUserById(c.user1).username ))
+                .ForMember(a=> a.SecondUsername, b => b.MapFrom(c=> _repo.GetUserById(c.user2).username))
+
                 .ForMember(a => a.User2Id, b => b.MapFrom(c => c.user2))
                 .ForMember(a => a.User1, opt => opt.Ignore())
                 .ForMember(a => a.User2, opt => opt.Ignore())

@@ -140,8 +140,9 @@ namespace FightClub.Controllers
         [Route("replay/{id}")]
         public ActionResult Replay(int id)
         {
-         
             var match = Mapper.Map<Match>(_gameRepository.GetMatchByMatchId(id));
+            match.User1 = _gameRepository.GetUserById(match.User1Id).username;
+            match.User2 = _gameRepository.GetUserById(match.User2Id).username;
             return View(match);
         }
     }
