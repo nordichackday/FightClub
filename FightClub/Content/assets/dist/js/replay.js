@@ -77,7 +77,7 @@
 		}
 		addClass($(".winner"), "show");
 		setTimeout(function() {
-			location.href = "/"; 
+			location.href = "/User?id=" + loggedInUser; 
 		}, 3000);
 	}
 
