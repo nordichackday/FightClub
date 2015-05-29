@@ -5,6 +5,14 @@ var util = require("./util.js"),
 
 var actionButtons = $$(".actions button");
 
+var moveMap = {
+	"blockhigh": 0,
+	"hithigh": 1,
+	"blockmid": 2,
+	"hitmid": 3,
+	"blocklow": 4,
+	"hitlow": 5
+};
 
 function resetRound(roundNumber) {
 	var buttons = $$(".actions button[data-round='" + roundNumber + "']");
@@ -16,6 +24,11 @@ function resetRound(roundNumber) {
 function setRoundAction(roundNumber, area, action) {
 	var button = $(".actions button[data-round='" + roundNumber + "'][data-area='" + area + "']");
 	button.setAttribute("data-action", action);
+	if (activeUser === "User1") {
+		$("#User1Move" + roundNumber).value = moveMap[action+area];
+	} else {
+		$("#User2Move" + roundNumber).value = moveMap[action+area];
+	}
 }
 
 actionButtons.forEach(function(button) {
@@ -32,6 +45,10 @@ actionButtons.forEach(function(button) {
 		}
 		setRoundAction(roundNumber, area, action);
 	});
+});
+
+addEvent($(".battle-prepare button.fight"), "click", function() {
+	$("#battleform").submit();
 });
 
 resetRound(1);
