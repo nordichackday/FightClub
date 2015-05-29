@@ -12,7 +12,9 @@
 
 <h2>WELCOME @Model.User.Username</h2>
 
-<div class="avatar player-1"><img src="/content/assets/dist/img/bamse_avatar.png"></div>
+<div class="avatar">
+    <img src="/content/assets/dist/img/@(Model.User.AvatarId == 1 ? "bamse" : "buu")_avatar.png">
+</div>
 
 <div>
     <dl class="dl-horizontal">
