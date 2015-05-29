@@ -23,7 +23,7 @@ namespace FightClub.Controllers
         //Api/Opponent?username=mfeh
         public User GetOpponentByUserName(string username)
         {
-           return AutoMapper.Mapper.Map<User>(_repo.GetUser(username));
+           return AutoMapper.Mapper.Map<User>(_repo.GetOpponent(username));
         }
         //Api/Opponent
         [HttpGet]

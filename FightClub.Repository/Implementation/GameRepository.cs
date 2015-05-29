@@ -34,6 +34,14 @@ namespace FightClub.Repository.Implementation
                 return userProfile;
             }
         }
+
+        public user GetOpponent(string userName)
+        {
+            using (var db = new fightClubEntities())
+            {
+                return db.user.SingleOrDefault(a => a.username == userName);
+            }
+        }
         public IEnumerable<avatar> GetAvatars()
         {
             using (var db = new fightClubEntities())
