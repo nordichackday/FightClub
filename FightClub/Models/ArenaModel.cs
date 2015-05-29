@@ -9,6 +9,8 @@ namespace FightClub.Models
     public class ArenaModel
     {
         public User User { get; set; }
-
+        public List<Match> PendingMatches { get; set; }
+        public List<Match> PlayedMatches { get; set; }
     }
+    
 }

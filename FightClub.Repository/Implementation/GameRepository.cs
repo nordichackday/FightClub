@@ -107,5 +107,21 @@ namespace FightClub.Repository.Implementation
                 return dbuser;
             }  
         }
+
+        public List<match> GetPendingMatches(int id)
+        {
+            using (var db = new fightClubEntities())
+            {
+                return db.match.Where(a => a.user2 == id).ToList();
+            }
+        }
+
+        public List<match> GetPlayedMatches(int id)
+        {
+            using (var db = new fightClubEntities())
+            {
+                return db.match.Where(a => a.user2 == id || a.user1 == id).ToList();
+            }
+        }
     }
 }
