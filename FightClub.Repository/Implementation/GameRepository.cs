@@ -34,6 +34,14 @@ namespace FightClub.Repository.Implementation
                 return userProfile;
             }
         }
+
+        public user GetOpponent(string userName)
+        {
+            using (var db = new fightClubEntities())
+            {
+                return db.user.SingleOrDefault(a => a.username == userName);
+            }
+        }
         public IEnumerable<avatar> GetAvatars()
         {
             using (var db = new fightClubEntities())
@@ -88,6 +96,16 @@ namespace FightClub.Repository.Implementation
                var result = db.match.SingleOrDefault(a => a.id == id);
                 return result;
             }
+        }
+        public user UpdateUser(user user)
+        {
+            using (var db = new fightClubEntities())
+            {
+                var dbuser = db.user.Single(a => a.id ==user.id);
+                dbuser = user;
+                db.SaveChanges();
+                return dbuser;
+            }  
         }
     }
 }
