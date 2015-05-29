@@ -113,6 +113,8 @@ namespace FightClub.Controllers
             var user2 = _gameRepository.GetUserById(dbMatch.User2Id);
             user1.score += dbMatch.User1Points.Value;
             user2.score += dbMatch.User2Points.Value;
+            dbMatch.User1 = user1.username;
+            dbMatch.User2 = user2.username;
             if (dbMatch.User1Points > dbMatch.User2Points)
             {
                 user1.wins++;
