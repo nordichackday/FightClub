@@ -81,11 +81,11 @@ namespace FightClub.Repository.Implementation
                 db.SaveChanges();
             }
         }
-        public user GetRandomOpponent()
+        public user GetRandomOpponent(string username)
         {
             using (var db = new fightClubEntities())
             {
-                var opponent = db.user.OrderBy(r => Guid.NewGuid()).First();
+                var opponent = db.user.OrderBy(r => Guid.NewGuid()).First(a => a.username != username);
                 return opponent;
             }
         }

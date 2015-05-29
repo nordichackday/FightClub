@@ -27,9 +27,9 @@ namespace FightClub.Controllers
         }
         //Api/Opponent
         [HttpGet]
-        public User GetRandomOpponent()
+        public User GetRandomOpponent(string username)
         {
-            return AutoMapper.Mapper.Map<User>(_repo.GetRandomOpponent());
+            return AutoMapper.Mapper.Map<User>(_repo.GetRandomOpponent(username));
         }
     }
 }
