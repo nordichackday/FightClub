@@ -114,7 +114,7 @@ namespace FightClub.Repository.Implementation
         {
             using (var db = new fightClubEntities())
             {
-                return db.match.Where(a => a.user2 == id).ToList();
+                return db.match.Where(a => a.user2 == id && a.resolved == false).ToList();
             }
         }
 
