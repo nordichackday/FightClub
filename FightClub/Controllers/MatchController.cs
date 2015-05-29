@@ -127,8 +127,8 @@ namespace FightClub.Controllers
             }
             dbMatch.Resolved = true;
             dbMatch.SolvedTime = DateTime.Now;
-            //_gameRepository.UpdateUser(user1);
-            //_gameRepository.UpdateUser(user2);
+            _gameRepository.UpdateUser(user1);
+            _gameRepository.UpdateUser(user2);
             _gameRepository.UpdateMatch(Mapper.Map<Repository.match>(dbMatch));
             return Replay(dbMatch);
         }

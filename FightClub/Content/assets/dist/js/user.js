@@ -66,7 +66,7 @@
 
 	function getUserByName() {
 		var name = userInput.value;
-		if (!name) {
+		if (!name || name === loggedInUser) {
 			return;
 		}
 		ajax.get("/Api/Opponent?username=" + name, function(err, data) {
@@ -78,7 +78,7 @@
 	}
 
 	function challengeUser(name) {
-		alert("Challenging " + name + "!");
+		location.href = "/match/start/" + loggedInUser + "/vs/" + name;
 	}
 
 
