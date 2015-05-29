@@ -21,8 +21,14 @@ namespace FightClub.Controllers
         // GET: User
         public ActionResult Index(string id)
         {
-            var user = Mapper.Map<User>(_gameRepository.GetUser(id));
-            var model = new ArenaModel {User = user};
+            var dbuser = _gameRepository.GetUser(id);
+            var user = Mapper.Map<User>(dbuser);
+            var model = new ArenaModel
+            {
+                User = user,
+                PendingMatches = Mapper.Map<List<Match>>(_gameRepository.GetPendingMatches(dbuser.id)),
+                PlayedMatches = Mapper.Map<List<Match>>(_gameRepository.GetPlayedMatches(dbuser.id))
+            };
             return View(model);
         }
     }

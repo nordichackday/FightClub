@@ -78,10 +78,22 @@
             @Html.DisplayFor(model => model.User.Losses)
         </dd>
         <dd>
-            Replay matches:
+            Played matches: @Model.PlayedMatches.Count
+            @{
+                foreach (var match in Model.PlayedMatches)
+                {
+                    Html.ActionLink(string.Format("Replay {0} vs {1}", match.User1, match.User2), "Replay", "Match", new {id = match.Id});
+                }
+            }
         </dd>
         <dd>
-            Pending mathces:
+            Pending matches: @Model.PendingMatches.Count
+            @{
+                foreach (var match in Model.PendingMatches)
+                {
+                    Html.ActionLink(string.Format("Fight from {0}", match.User1), "Anwser", "Match", new { id = match.Id });
+                }
+            }
         </dd>
     </dl>
 </div>
