@@ -156,6 +156,11 @@ body {
 }
 
 .container.user {
+	height: 100%;
+	&>div {
+		  height: 60%;
+  overflow-y: scroll;
+	}
 	h2 {
 		text-align: center;
 		text-transform: uppercase;
@@ -340,6 +345,20 @@ body {
 			display: block;
 			transform: scale(2, 2);
 			opacity: 0.0;
+		}
+	}
+	.winner {
+		position: absolute;
+		width: 100%;
+		font-family: "Luckiest Guy";
+		font-size: 200%;
+		color: white;
+		-webkit-text-stroke: 0.04em black;
+		text-align: center;
+		transform: scale(1, 1);
+		transition:  transform 2s;
+		&.show {
+			transform: scale(2, 2);
 		}
 	}
 	.field {

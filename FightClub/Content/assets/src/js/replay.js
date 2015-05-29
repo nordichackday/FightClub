@@ -22,8 +22,14 @@ function getMove(n) {
 }
 
 function battleDone() {
-	alert("Battle done!");
+	$(".winner").innerHTML = matchData.winner + " wins!";
+	addClass($(".winner"), "show");
+	setTimeout(function() {
+		location.href = "/"; 
+	}, 3000);
 }
+
+
 
 
 function playRound(round, callback) {
