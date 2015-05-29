@@ -2,7 +2,8 @@
 module.exports = {
   progress: false,
   entry: {
-    "game": "./assets/src/js/game.js"
+    "user": "./assets/src/js/user.js",
+    "prepare": "./assets/src/js/prepare.js"
   },
   output: {
     path: "./assets/dist/",
