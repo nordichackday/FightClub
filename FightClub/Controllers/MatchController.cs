@@ -20,7 +20,9 @@ namespace FightClub.Controllers
         [Route("start/{user1}/vs/{user2}")]
         public ActionResult Start(string user1, string user2)
         {
-            var match = new Match() { User1 = user1, User2 = user2 };
+            var dbuser1 = _gameRepository.GetOpponent(user1);
+            var dbuser2 = _gameRepository.GetOpponent(user2);
+            var match = new Match() { User1 = user1, User2 = user2, User1Id = dbuser1.id, User2Id = dbuser2.id};
             ViewBag.ActiveUser = "User1";
             return View("Index", match);
         }
@@ -35,34 +37,21 @@ namespace FightClub.Controllers
 
         [HttpPost]
         [Route("create")]
-        public ActionResult Create(FormCollection matchForm)
+        public ActionResult Create(Match match)
         {
-            var match = new Match {
-                User1 = matchForm["User1"], User2 = matchForm["User2"], 
-                User1Move1 = (Move) Enum.Parse(typeof(Move),matchForm["User1Move1"]),
-                User1Move2 = (Move)Enum.Parse(typeof(Move), matchForm["User1Move2"]),
-                User1Move3 = (Move)Enum.Parse(typeof(Move), matchForm["User1Move3"])
-            };
-           /* match.Created = DateTime.Now;
+            match.Created = DateTime.Now;
             match.User2Move1 = match.User2Move2 = match.User2Move3 = null;
-            match.Resolved = false;*/
+            match.Resolved = false;
             _gameRepository.CreateMatch(Mapper.Map<Repository.match>(match));
             return RedirectToAction("Index", "User", new { id = match.User1 });
         }
 
         [HttpPost]
         [Route("update")]
-        public ActionResult Update(FormCollection matchForm)
+        public ActionResult Update(Match match)
         {
-            var match = new Match
-            {
-                Id = int.Parse(matchForm["Id"]),
-                User2Move1 = (Move)Enum.Parse(typeof(Move), matchForm["User2Move1"]),
-                User2Move2 = (Move)Enum.Parse(typeof(Move), matchForm["User2Move2"]),
-                User2Move3 = (Move)Enum.Parse(typeof(Move), matchForm["User2Move3"])
-            };
-            var dbMatch = Mapper.Map<Match>(_gameRepository.GetMatchByMatchId(match.Id));
-            if (dbMatch.Resolved)
+            var dbMatch = Mapper.Map<Match>(_gameRepository.GetMatchByMatchId(match.Id.Value));
+            if (dbMatch.Resolved.GetValueOrDefault(false))
                 throw new Exception("Invalid update, match already resolved");
             
             dbMatch.User2Move1 = match.User2Move1;
@@ -120,8 +109,8 @@ namespace FightClub.Controllers
             }
             var user1 = _gameRepository.GetUser(dbMatch.User1);
             var user2 = _gameRepository.GetUser(dbMatch.User2);
-            user1.score += dbMatch.User1Points;
-            user2.score += dbMatch.User2Points;
+            user1.score += dbMatch.User1Points.Value;
+            user2.score += dbMatch.User2Points.Value;
             if (dbMatch.User1Points > dbMatch.User2Points)
             {
                 user1.wins++;
