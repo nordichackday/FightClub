@@ -46,6 +46,33 @@
 		transform: perspective(600px) rotateX(405deg) scale(1,1.5);
 	}
 }
+
+@keyframes bounce1 {
+	0% {
+		transform: translateY(-5px);
+	}
+	50% {
+		transform: translateY(0);
+	}
+	100% {
+		transform: translateY(-5px);
+	}
+}
+
+
+@keyframes bounce2 {
+	0% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-5px);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+
 * {
 	box-sizing: border-box;
 }
@@ -262,4 +289,138 @@ body {
 		}
 	}
 }
+
+
+.container.battle-replay {
+	width: 100%;
+	height: 100%;
+	background-image: url(/content/assets/dist/img/gameview_bg.jpg);
+	background-size: 100%;
+	background-position-y: -100px;
+	header {
+		white-space: nowrap;
+		position: relative;
+		top: -1.5em;
+		div {
+			display: inline-block;
+		}
+		.player-name {
+			width: 40%;
+			font-size: 180%;
+			-webkit-text-stroke: 0.04em white;
+			&.player-1 {
+				padding-left: 10%;
+			}
+			&.player-2 {
+				padding-right: 10%;
+				text-align: right;
+			}
+		}
+		.versus {
+			width: 20%;
+			font-family: 'Luckiest Guy';
+			text-align: center;
+			font-size: 200%;
+			-webkit-text-stroke: 0.04em white;
+		}
+	}
+	.announcer {
+		position: absolute;
+		width: 100%;
+		font-family: "Luckiest Guy";
+		font-size: 300%;
+		color: white;
+		opacity: 1.0;
+		-webkit-text-stroke: 0.04em black;
+		text-align: center;
+		display: block;
+		transform: scale(1, 1);
+		transition: opacity 2s, transform 2s;
+		&.fade {
+			display: block;
+			transform: scale(2, 2);
+			opacity: 0.0;
+		}
+	}
+	.field {
+		width: 80%;
+		height: 80%;
+		margin: 10%;
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		.avatar {
+			position: absolute;
+			width: 50%;
+			height: 100%;
+			background-repeat: no-repeat;
+			background-size: 100%;
+			top: 50px;
+			&.player-1 {
+				left: 0;
+				background-image: url(/content/assets/dist/img/bamse_idle.png);
+				&[data-state="idle"] {
+					animation-duration: 0.5s;
+					animation-name: bounce1;
+					animation-iteration-count: infinite;
+				}
+				&[data-state="hithigh"] {
+					background-image: url(/content/assets/dist/img/bamse_hits_hi.png);
+				}
+				&[data-state="hitlow"] {
+					background-image: url(/content/assets/dist/img/bamse_hits_lo.png);
+				}
+				&[data-state="hitmid"] {
+					background-image: url(/content/assets/dist/img/bamse_hits_mid.png);
+				}
+				&[data-state="blockhigh"] {
+					background-image: url(/content/assets/dist/img/bamse_blocks_hi.png);
+				}
+				&[data-state="blocklow"] {
+					background-image: url(/content/assets/dist/img/bamse_blocks_lo.png);
+				}
+				&[data-state="blockmid"] {
+					background-image: url(/content/assets/dist/img/bamse_blocks_mid.png);
+				}
+				&[data-state="die"] {
+					background-image: url(/content/assets/dist/img/bamse_dies.png);
+				}
+			}
+			&.player-2 {
+				right: 0;
+				background-image: url(/content/assets/dist/img/buu_idle.png);
+				&[data-state="idle"] {
+					animation-duration: 0.53s;
+					animation-name: bounce2;
+					animation-iteration-count: infinite;
+				}
+				&[data-state="hithigh"] {
+					background-image: url(/content/assets/dist/img/buu_hits_hi.png);
+				}
+				&[data-state="hitlow"] {
+					background-image: url(/content/assets/dist/img/buu_hits_lo.png);
+				}
+				&[data-state="hitmid"] {
+					background-image: url(/content/assets/dist/img/buu_hits_mid.png);
+				}
+				&[data-state="blockhigh"] {
+					background-image: url(/content/assets/dist/img/buu_blocks_hi.png);
+				}
+				&[data-state="blocklow"] {
+					background-image: url(/content/assets/dist/img/buu_blocks_lo.png);
+				}
+				&[data-state="blockmid"] {
+					background-image: url(/content/assets/dist/img/buu_blocks_mid.png);
+				}
+				&[data-state="die"] {
+					background-image: url(/content/assets/dist/img/buu_dies.png);
+				}
+			}
+		}
+
+	}
+}
+
+
 }

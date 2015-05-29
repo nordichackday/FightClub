@@ -3,5 +3,36 @@
     ViewBag.Title = "Replay";
 }
 
-<h2>Replay</h2>
+<script>
+var matchData = {
+	rounds: [
+		{
+			player1: 0, //Model.User1Move1,
+			player2: 3, //Model.User2Move1,
+		},
+		{
+			player1: 4, //Model.User1Move2,
+			player2: 1, //Model.User2Move2,
+		},
+		{
+			player1: 2, //Model.User1Move3,
+			player2: 2, //Model.User2Move3,
+		}
+	]
+};
+</script>
 
+<div class="container battle-replay">
+    <header>
+        <div class="player-name player-1">jase</div>
+        <div class="versus">VS</div>
+        <div class="player-name player-2">jase</div>
+    </header>
+    <div class="announcer">Fight!</div>
+    <div class="field">
+    	<div class="avatar player-1" data-state=""></div>
+    	<div class="avatar player-2" data-state=""></div>
+    </div>
+</div>
+
+<script src="/content/assets/dist/js/replay.js"></script>
