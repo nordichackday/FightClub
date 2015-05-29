@@ -157,6 +157,10 @@ body {
 
 .container.user {
 	height: 100%;
+	.avatar {
+		position: absolute;
+		right: 5%;
+	}
 	&>div {
 		  height: 60%;
   overflow-y: scroll;
@@ -219,6 +223,17 @@ body {
 			text-align: center;
 			font-size: 200%;
 			-webkit-text-stroke: 0.04em white;
+		}
+	}
+	.avatar {
+		position: absolute;
+		top: 50%;
+		margin-top: -100px;
+		&.player-1 {
+			left: -6%;
+		}
+		&.player-2 {
+			right: -6%;
 		}
 	}
 	.actions {
