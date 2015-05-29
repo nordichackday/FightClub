@@ -189,14 +189,47 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\assets\dist\css\game.css" />
+    <Content Include="Content\assets\dist\img\bamse_avatar.png" />
+    <Content Include="Content\assets\dist\img\bamse_blocks_hi.png" />
+    <Content Include="Content\assets\dist\img\bamse_blocks_lo.png" />
+    <Content Include="Content\assets\dist\img\bamse_blocks_mid.png" />
+    <Content Include="Content\assets\dist\img\bamse_dies.png" />
+    <Content Include="Content\assets\dist\img\bamse_hits_hi.png" />
+    <Content Include="Content\assets\dist\img\bamse_hits_lo.png" />
+    <Content Include="Content\assets\dist\img\bamse_hits_mid.png" />
+    <Content Include="Content\assets\dist\img\bamse_idle.png" />
+    <Content Include="Content\assets\dist\img\buu_avatar.png" />
+    <Content Include="Content\assets\dist\img\buu_blocks_hi.png" />
+    <Content Include="Content\assets\dist\img\buu_blocks_lo.png" />
+    <Content Include="Content\assets\dist\img\buu_blocks_mid.png" />
+    <Content Include="Content\assets\dist\img\buu_dies.png" />
+    <Content Include="Content\assets\dist\img\buu_hits_hi.png" />
+    <Content Include="Content\assets\dist\img\buu_hits_lo.png" />
+    <Content Include="Content\assets\dist\img\buu_hits_mid.png" />
+    <Content Include="Content\assets\dist\img\buu_idle.png" />
+    <Content Include="Content\assets\dist\img\gameview_bg.jpg" />
+    <Content Include="Content\assets\dist\js\prepare.js" />
+    <Content Include="Content\assets\dist\js\replay.js" />
+    <Content Include="Content\assets\dist\js\user.js" />
+    <Content Include="Content\assets\src\css\normalize.css" />
+    <Content Include="Content\assets\src\js\prepare.js" />
+    <Content Include="Content\assets\src\js\replay.js" />
+    <Content Include="Content\assets\src\js\user.js" />
+    <Content Include="Content\assets\src\js\util.js" />
+    <Content Include="Content\Gruntfile.js" />
+    <Content Include="Content\webpack.config.js" />
     <Content Include="database.sql" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\assets\dist\fonts\bubblegumsans.woff2" />
+    <Content Include="Content\assets\dist\fonts\bubblegumsansext.woff2" />
+    <Content Include="Content\assets\dist\fonts\luckiestguy.woff2" />
+    <Content Include="Content\assets\src\less\game.less" />
+    <Content Include="Content\assets\src\less\normalize.less" />
+    <Content Include="Content\package.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -230,6 +263,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\dist\css\" />
+    <Folder Include="Content\dist\fonts\" />
+    <Folder Include="Content\dist\img\" />
+    <Folder Include="Content\dist\js\" />
     <Folder Include="Views\Avatar\" />
   </ItemGroup>
   <ItemGroup>
