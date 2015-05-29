@@ -109,8 +109,8 @@ namespace FightClub.Controllers
                     dbMatch.User2Points += 1;
                 }
             }
-            var user1 = _gameRepository.GetUser(dbMatch.User1);
-            var user2 = _gameRepository.GetUser(dbMatch.User2);
+            var user1 = _gameRepository.GetUserById(dbMatch.User1Id);
+            var user2 = _gameRepository.GetUserById(dbMatch.User2Id);
             user1.score += dbMatch.User1Points.Value;
             user2.score += dbMatch.User2Points.Value;
             if (dbMatch.User1Points > dbMatch.User2Points)
@@ -134,12 +134,7 @@ namespace FightClub.Controllers
             _gameRepository.UpdateUser(user1);
             _gameRepository.UpdateUser(user2);
             _gameRepository.UpdateMatch(Mapper.Map<Repository.match>(dbMatch));
-            return Replay(dbMatch);
-        }
-
-        private ActionResult Replay(Match match)
-        {
-            return View(match);
+            return View("Replay", dbMatch);
         }
 
         [Route("replay/{id}")]
