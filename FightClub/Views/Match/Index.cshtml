@@ -41,10 +41,12 @@
 
 @using (Html.BeginForm(ViewBag.ActiveUser == "User1" ? "Create" : "Update","Match",FormMethod.Post, new { id = "battleform" }))
 {
-    @Html.HiddenFor(model => model.Id)
     @Html.HiddenFor(model => model.User1)
     @Html.HiddenFor(model => model.User2)
-    if (ViewBag.ActiveUser == "User1") { 
+    @Html.HiddenFor(model => model.User1Id)
+    @Html.HiddenFor(model => model.User2Id)
+    if (ViewBag.ActiveUser == "User1")
+    {
         @Html.HiddenFor(model => model.User1Move1)
         @Html.HiddenFor(model => model.User1Move2)
         @Html.HiddenFor(model => model.User1Move3)
@@ -54,6 +56,7 @@
         @Html.HiddenFor(model => model.User2Move1)
         @Html.HiddenFor(model => model.User2Move2)
         @Html.HiddenFor(model => model.User2Move3)
+        @Html.HiddenFor(model => model.Id)
     }
 
     <div class="form-horizontal">
