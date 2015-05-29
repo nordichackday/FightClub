@@ -2,23 +2,15 @@
     ViewBag.Title = "FIGHT CLUB | NORDIC HACK DAY";
 }
 
-<div class="jumbotron">
-    <h1>Fight Club</h1>
-    <p class="lead">Fiiiightttt!</p>
 
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Login</h2>
-    @using (Html.BeginForm("Index", "User", FormMethod.Get))
-    {
-        @Html.Label("Username:")
-        @Html.TextBox("id")
-        <button type="submit">OK</button>
-    }
-            
-            
+<div class="container login">
+    <div class="form">
+        @using (Html.BeginForm("Index", "User", FormMethod.Get))
+        {
+            @Html.Label("Username: ")
+            @Html.TextBox("id")
+            <button type="submit">Login</button>
+        }
     </div>
-   
 </div>
+
