@@ -8,16 +8,16 @@ var matchData = {
 	winner: "jase",
 	rounds: [
 		{
-			player1: 0, //Model.User1Move1,
-			player2: 3, //Model.User2Move1,
+			player1: @Model.User1Move1,
+			player2: @Model.User2Move1
 		},
 		{
-			player1: 4, //Model.User1Move2,
-			player2: 1, //Model.User2Move2,
+			player1: @Model.User1Move2,
+			player2: @Model.User2Move2
 		},
 		{
-			player1: 2, //Model.User1Move3,
-			player2: 2, //Model.User2Move3,
+			player1: @Model.User1Move3,
+			player2: @Model.User2Move3
 		}
 	]
 };
@@ -25,9 +25,9 @@ var matchData = {
 
 <div class="container battle-replay">
     <header>
-        <div class="player-name player-1">jase</div>
+        <div class="player-name player-1">@Model.User1</div>
         <div class="versus">VS</div>
-        <div class="player-name player-2">jase</div>
+        <div class="player-name player-2">@Model.User2</div>
     </header>
     <div class="announcer">Fight!</div>
     <div class="winner"></div>
