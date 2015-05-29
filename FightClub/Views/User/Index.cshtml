@@ -10,8 +10,6 @@
 <h2>WELCOME @Model.Username</h2>
 
 <div>
-    <h4>User</h4>
-    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Username)
@@ -80,4 +78,16 @@
     </dl>
 </div>
 
+<div>
+
+    <div class="challenge-form">
+        <label>Challenge user:</label>
+        <input class="username">
+        <input type=button class="button-go" value="Go">
+        <input type=button class="button-random" value="Random">
+    </div>
+
 </div>
+
+</div>
+<script src="/content/assets/dist/js/user.js"></script>
