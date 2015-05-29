@@ -5,19 +5,21 @@
 
 <script>
 var matchData = {
-	winner: "jase",
+	user1: "@Model.User1",
+	user2: "@Model.User2",
+	result: @Model.Result,
 	rounds: [
 		{
-			player1: @Model.User1Move1,
-			player2: @Model.User2Move1
+			player1: "@Model.User1Move1",
+			player2: "@Model.User2Move1"
 		},
 		{
-			player1: @Model.User1Move2,
-			player2: @Model.User2Move2
+			player1: "@Model.User1Move2",
+			player2: "@Model.User2Move2"
 		},
 		{
-			player1: @Model.User1Move3,
-			player2: @Model.User2Move3
+			player1: "@Model.User1Move3",
+			player2: "@Model.User2Move3"
 		}
 	]
 };

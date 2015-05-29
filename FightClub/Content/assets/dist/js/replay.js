@@ -51,12 +51,12 @@
 		addEvent = util.addEvent;
 
 	var moveMap = {
-		"blockhigh": 0,
-		"hithigh": 1,
-		"blockmid": 2,
-		"hitmid": 3,
-		"blocklow": 4,
-		"hitlow": 5
+		"blockhigh": "BlockHigh",
+		"hithigh": "HitHigh",
+		"blockmid": "BlockMiddle",
+		"hitmid": "HitMiddle",
+		"blocklow": "BlockLow",
+		"hitlow": "HitLow"
 	};
 
 	function getMove(n) {
@@ -68,7 +68,13 @@
 	}
 
 	function battleDone() {
-		$(".winner").innerHTML = matchData.winner + " wins!";
+		if (matchData.result === 0) {
+			$(".winner").innerHTML = "TIE!";
+		} else if (matchData.result === 1) {
+			$(".winner").innerHTML = matchData.user1 + " wins!";
+		} else if (matchData.result === 2) {
+			$(".winner").innerHTML = matchData.user2 + " wins!";
+		}
 		addClass($(".winner"), "show");
 		setTimeout(function() {
 			location.href = "/"; 
