@@ -10,7 +10,14 @@
     <h4>Match @Model.User1 vs @Model.User2</h4>
     <hr />
     <dl class="dl-horizontal">
-        @Model.User1Move1
+        @if (ViewBag.ActiveUser == "User1")
+        {
+            <text>you're user1, create action here</text>
+        }
+        else
+        {
+            <text>you're user2, update action here</text>
+        }
     </dl>
 </div>
 <p>
