@@ -1,24 +1,47 @@
 ﻿@model FightClub.Models.Match
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Prepare for battle!";
 }
 
-<h2>Index</h2>
 
-<div>
-    <h4>Match @Model.User1 vs @Model.User2</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        @if (ViewBag.ActiveUser == "User1")
-        {
-            <text>you're user1, create action here</text>
-        }
-        else
-        {
-            <text>you're user2, update action here</text>
-        }
-    </dl>
+<div class="container battle-prepare">
+    <header>
+        <div class="player-name player-1">@Model.User1</div>
+        <div class="versus">VS</div>
+        <div class="player-name player-2">@Model.User2</div>
+    </header>
+    <div class="actions">
+        <div class="header">
+            <div>Round 1</div>
+            <div>Round 2</div>
+            <div>Round 3</div>
+        </div>
+        <div class="action-area">
+            <div class="action"><button data-round="1" data-area="high" data-action=""></button></div>
+            <div class="action"><button data-round="2" data-area="high" data-action=""></button></div>
+            <div class="action"><button data-round="3" data-area="high" data-action=""></button></div>
+        </div>
+        <div class="action-area">
+            <div class="action"><button data-round="1" data-area="mid" data-action=""></button></div>
+            <div class="action"><button data-round="2" data-area="mid" data-action=""></button></div>
+            <div class="action"><button data-round="3" data-area="mid" data-action=""></button></div>
+        </div>
+        <div class="action-area">
+            <div class="action"><button data-round="1" data-area="low" data-action=""></button></div>
+            <div class="action"><button data-round="2" data-area="low" data-action=""></button></div>
+            <div class="action"><button data-round="3" data-area="low" data-action=""></button></div>
+        </div>
+    </div>
+    <button class="fight">Fight</button>
 </div>
-<p>
-</p>
+
+@if (ViewBag.ActiveUser == "User1")
+{
+}
+else
+{
+}
+
+
+<script src="/content/assets/dist/js/prepare.js"></script>
