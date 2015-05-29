@@ -87,7 +87,7 @@
             @{
                 foreach (var match in Model.PlayedMatches)
                 {
-                    @Html.ActionLink(string.Format("Replay {0} vs {1}", match.User1, match.User2), "Replay", "Match", new {id = match.Id}, null);
+                    @Html.ActionLink(string.Format("Replay {0} vs {1}", match.FirstUsername, match.SecondUsername), "Replay", "Match", new {id = match.Id}, null);
                 }
             }
         </dd>
@@ -97,7 +97,7 @@
             @{
                 foreach (var match in Model.PendingMatches)
                 {
-                    @Html.ActionLink(string.Format("Fight from {0}", @match.User1), "Anwser", "Match", new { matchid = match.Id }, null);
+                    @Html.ActionLink(string.Format("Fight from {0}", @match.FirstUsername), "Anwser", "Match", new { matchid = match.Id }, null);
                 }
             }
         </dd>

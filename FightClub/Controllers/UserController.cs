@@ -23,12 +23,15 @@ namespace FightClub.Controllers
         {
             var dbuser = _gameRepository.GetUser(id);
             var user = Mapper.Map<User>(dbuser);
+            var pendingMatches = Mapper.Map<List<Match>>(_gameRepository.GetPendingMatches(dbuser.id));
+            var playedMatches = Mapper.Map<List<Match>>(_gameRepository.GetPlayedMatches(dbuser.id));
+            var waiting = Mapper.Map<List<Match>>(_gameRepository.GetWaitingMatches(dbuser.id));
             var model = new ArenaModel
             {
                 User = user,
-                PendingMatches = Mapper.Map<List<Match>>(_gameRepository.GetPendingMatches(dbuser.id)),
-                PlayedMatches = Mapper.Map<List<Match>>(_gameRepository.GetPlayedMatches(dbuser.id)),
-                WaitingMatches = Mapper.Map<List<Match>>(_gameRepository.GetWaitingMatches(dbuser.id)),
+                PendingMatches = pendingMatches,
+                PlayedMatches =  playedMatches,
+                WaitingMatches = waiting    
             };
             return View(model);
         }
