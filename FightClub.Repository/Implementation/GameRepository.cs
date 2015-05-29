@@ -69,8 +69,8 @@ namespace FightClub.Repository.Implementation
             using (var db = new fightClubEntities())
             {
                 var oldMatch = db.match.Single(a => a.id == match.id);
-                if (oldMatch == null) return;
-                oldMatch = match;
+                if (oldMatch == null) throw new Exception("not found");
+                db.Entry(oldMatch).CurrentValues.SetValues(match);
                 db.SaveChanges();
             }
         }
@@ -103,7 +103,8 @@ namespace FightClub.Repository.Implementation
             using (var db = new fightClubEntities())
             {
                 var dbuser = db.user.Single(a => a.id == user.id);
-                dbuser = user;
+                if (dbuser == null) throw new Exception("not found");
+                db.Entry(dbuser).CurrentValues.SetValues(user);
                 db.SaveChanges();
                 return dbuser;
             }
