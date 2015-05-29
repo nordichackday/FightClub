@@ -1,0 +1,113 @@
+﻿@model IEnumerable<FightClub.Repository.match>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.resolved)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.result)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user1move1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user1move2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user1move3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user2move1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user2move2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user2move3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.created)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.solvedTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user1Points)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user2Points)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.resolved)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.result)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user1move1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user1move2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user1move3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user2move1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user2move2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user2move3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.created)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.solvedTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user1Points)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user2Points)
+            </td>
+
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

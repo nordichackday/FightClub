@@ -61,6 +61,7 @@ namespace FightClub.Repository.Implementation
             using (var db = new fightClubEntities())
             {
                 db.match.Add(match);
+                db.SaveChanges();
             }
         }
         public void UpdateMatch(match match)
@@ -121,6 +122,14 @@ namespace FightClub.Repository.Implementation
             using (var db = new fightClubEntities())
             {
                 return db.match.Where(a => a.user2 == id || a.user1 == id).ToList();
+            }
+        }
+
+        public List<match> GetMatches()
+        {
+            using (var db = new fightClubEntities())
+            {
+                return db.match.ToList();
             }
         }
     }
