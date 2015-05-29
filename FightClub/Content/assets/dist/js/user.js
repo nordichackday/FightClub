@@ -56,7 +56,7 @@
 
 
 	function getRandomUser() {
-		ajax.get("/Api/Opponent", function(err, data) {
+		ajax.get("/Opponent/Random/" + loggedInUser, function(err, data) {
 			if (data) {
 				data = JSON.parse(data);
 				challengeUser(data.Username);
@@ -69,7 +69,7 @@
 		if (!name || name === loggedInUser) {
 			return;
 		}
-		ajax.get("/Api/Opponent?username=" + name, function(err, data) {
+		ajax.get("/Opponent/" + name, function(err, data) {
 			if (data) {
 				data = JSON.parse(data);
 				challengeUser(data.Username);
