@@ -89,5 +89,15 @@ namespace FightClub.Repository.Implementation
                 return result;
             }
         }
+        public user UpdateUser(user user)
+        {
+            using (var db = new fightClubEntities())
+            {
+                var dbuser = db.user.Single(a => a.id ==user.id);
+                dbuser = user;
+                db.SaveChanges();
+                return dbuser;
+            }  
+        }
     }
 }
