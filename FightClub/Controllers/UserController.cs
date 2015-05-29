@@ -18,9 +18,11 @@ namespace FightClub.Controllers
         {
             _gameRepository = new GameRepository();
         }
-        // GET: User
+        
         public ActionResult Index(string id)
         {
+            if (string.IsNullOrEmpty(id))
+                return HttpNotFound();
             var dbuser = _gameRepository.GetUser(id);
             var user = Mapper.Map<User>(dbuser);
             var pendingMatches = Mapper.Map<List<Match>>(_gameRepository.GetPendingMatches(dbuser.id));

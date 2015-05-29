@@ -134,15 +134,18 @@ namespace FightClub.Controllers
             _gameRepository.UpdateUser(user1);
             _gameRepository.UpdateUser(user2);
             _gameRepository.UpdateMatch(Mapper.Map<Repository.match>(dbMatch));
+
+            ViewBag.username = dbMatch.User2;
             return View("Replay", dbMatch);
         }
 
         [Route("replay/{id}")]
-        public ActionResult Replay(int id)
+        public ActionResult Replay(int id, string username)
         {
             var match = Mapper.Map<Match>(_gameRepository.GetMatchByMatchId(id));
             match.User1 = _gameRepository.GetUserById(match.User1Id).username;
             match.User2 = _gameRepository.GetUserById(match.User2Id).username;
+            ViewBag.username = username;
             return View(match);
         }
     }
