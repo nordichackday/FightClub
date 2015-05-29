@@ -1,6 +1,7 @@
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 
 namespace FightClub.Repository.Implementation
@@ -78,6 +79,14 @@ namespace FightClub.Repository.Implementation
             {
                 var opponent = db.user.OrderBy(r => Guid.NewGuid()).First();
                 return opponent;
+            }
+        }
+        public match GetMatchByMatchId(int id)
+        {
+            using (var db = new fightClubEntities())
+            {
+               var result = db.match.SingleOrDefault(a => a.id == id);
+                return result;
             }
         }
     }
