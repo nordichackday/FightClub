@@ -22,7 +22,8 @@ namespace FightClub.Controllers
         public ActionResult Index(string id)
         {
             var user = Mapper.Map<User>(_gameRepository.GetUser(id));
-            return View(user);
+            var model = new ArenaModel {User = user};
+            return View(model);
         }
     }
 }

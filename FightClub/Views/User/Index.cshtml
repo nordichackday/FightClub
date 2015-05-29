@@ -1,4 +1,4 @@
-﻿@model FightClub.Models.User
+﻿@model FightClub.Models.ArenaModel
 
 @{
     ViewBag.Title = "My page";
@@ -7,74 +7,79 @@
 
 <div class="container user">
 
-<h2>WELCOME @Model.Username</h2>
+<h2>WELCOME @Model.User.Username</h2>
 
 <div>
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Username)
+            @Html.DisplayNameFor(model => model.User.Username)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Username)
+            @Html.DisplayFor(model => model.User.Username)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AvatarId)
+            @Html.DisplayNameFor(model => model.User.AvatarId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AvatarId)
+            @Html.DisplayFor(model => model.User.AvatarId)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.MatchesLeft)
+            @Html.DisplayNameFor(model => model.User.MatchesLeft)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MatchesLeft)
+            @Html.DisplayFor(model => model.User.MatchesLeft)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Created)
+            @Html.DisplayNameFor(model => model.User.Created)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Created)
+            @Html.DisplayFor(model => model.User.Created)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LastModified)
+            @Html.DisplayNameFor(model => model.User.LastModified)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.LastModified)
+            @Html.DisplayFor(model => model.User.LastModified)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Score)
+            @Html.DisplayNameFor(model => model.User.Score)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Score)
+            @Html.DisplayFor(model => model.User.Score)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Wins)
+            @Html.DisplayNameFor(model => model.User.Wins)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Wins)
+            @Html.DisplayFor(model => model.User.Wins)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Losses)
+            @Html.DisplayNameFor(model => model.User.Losses)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Losses)
+            @Html.DisplayFor(model => model.User.Losses)
         </dd>
-
+        <dd>
+            Replay matches:
+        </dd>
+        <dd>
+            Pending mathces:
+        </dd>
     </dl>
 </div>
 
