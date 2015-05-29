@@ -87,7 +87,7 @@
             @{
                 foreach (var match in Model.PlayedMatches)
                 {
-                    @Html.ActionLink(string.Format("Replay {0} vs {1}", match.FirstUsername, match.SecondUsername), "Replay", "Match", new {id = match.Id}, null);
+                    @Html.ActionLink(string.Format("Replay {0} vs {1}", match.FirstUsername, match.SecondUsername), "Replay", "Match", new {id = match.Id, username = Model.User.Username}, null);
                 }
             }
         </dd>
